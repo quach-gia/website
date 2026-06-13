@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quách Gia BBQ · 郭家烧烤火锅 · Uyên Hưng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF6EF; --cream2:#F3E7D8; --white:#fff;
+  --ink:#2B1A12; --muted:#7a6855;
+  --ember:#D85A30; --deep:#993C1D; --gold:#C8893F; --char:#211611;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Be Vietnam Pro',sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:'Playfair Display','Noto Serif SC',serif}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:13px 26px;border-radius:40px;cursor:pointer;border:none;transition:.25s;font-family:inherit}
+.btn-fill{background:var(--ember);color:#fff}
+.btn-fill:hover{background:var(--deep);transform:translateY(-2px)}
+.btn-out{background:transparent;color:var(--ink);border:1.5px solid rgba(43,26,18,.25)}
+.btn-out:hover{border-color:var(--ember);color:var(--ember)}
+.kicker{font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--ember)}
+.sec-title{font-size:clamp(28px,4vw,46px);font-weight:800;line-height:1.12;margin:10px 0 8px}
+.sec-sub{color:var(--muted);font-size:16px;max-width:600px}
+.center{text-align:center}.mxauto{margin-left:auto;margin-right:auto}
+
+header{position:sticky;top:0;z-index:50;background:rgba(251,246,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,26,18,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo img{height:52px;width:auto}
+.logo .txt b{font-family:'Playfair Display',serif;font-size:19px;font-weight:800;letter-spacing:.5px;display:block;line-height:1}
+.logo .txt span{display:block;font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:3px}
+.logo .fallback{width:48px;height:48px;border-radius:50%;background:var(--ember);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-weight:700;font-size:24px}
+.menu{display:flex;gap:26px;font-size:15px;font-weight:500}
+.menu a:hover{color:var(--ember)}
+.hdr-right{display:flex;align-items:center;gap:16px}
+.lang{display:flex;gap:2px;background:var(--cream2);border-radius:30px;padding:4px}
+.lang button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);padding:5px 9px;border-radius:30px;font-family:inherit}
+.lang button.on{background:var(--ink);color:#fff}
+.burger{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--ink)}
+
+/* HERO */
+.hero{position:relative;padding:64px 0 76px;overflow:hidden}
+.hero:before{content:"";position:absolute;top:-160px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(216,90,48,.15),transparent 62%);border-radius:50%;z-index:0}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.04fr;gap:54px;align-items:center}
+.hero-text .kicker{margin-bottom:18px;display:inline-block}
+.hero h1{font-size:clamp(38px,5.4vw,66px);font-weight:900;line-height:1.05;margin:0 0 22px;letter-spacing:-.5px}
+.hero h1 em{color:var(--ember);font-style:normal}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:460px;margin-bottom:32px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.strip{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:40px;padding-top:28px;border-top:1px solid rgba(43,26,18,.1)}
+.strip div{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:500}
+.strip i{color:var(--ember);font-style:normal;font-size:18px}
+.hero-visual{position:relative}
+.hero-poster{display:block;border-radius:22px;overflow:hidden;box-shadow:0 36px 70px rgba(43,26,18,.3);border:5px solid #fff}
+.hero-poster img{width:100%;display:block}
+.hero-float{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:var(--ember);color:#fff;font-weight:600;font-size:14px;padding:8px 22px;border-radius:30px;white-space:nowrap;box-shadow:0 12px 30px rgba(216,90,48,.4)}
+.hero-card{position:relative;z-index:1;background:var(--char);border-radius:28px;padding:30px;box-shadow:0 40px 80px rgba(43,26,18,.28);overflow:hidden}
+.hero-card:before{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:130%;height:90%;background:radial-gradient(ellipse,rgba(216,90,48,.4),transparent 60%)}
+.hero-card .pot{position:relative;z-index:1;background:#fff;border-radius:18px;padding:14px}
+.hero-card .pot img{width:100%;border-radius:10px}
+.hero-thumbs{position:relative;z-index:1;display:flex;justify-content:center;gap:10px;margin-top:18px}
+.hero-thumbs img{width:64px;height:64px;object-fit:cover;border-radius:14px;border:2px solid rgba(255,255,255,.15)}
+.price-tag{position:absolute;z-index:2;top:22px;right:22px;background:var(--ember);color:#fff;border-radius:18px;padding:12px 18px;text-align:center;box-shadow:0 16px 34px rgba(216,90,48,.45)}
+.price-tag small{display:block;font-size:11px;opacity:.9;letter-spacing:1px}
+.price-tag b{font-family:'Playfair Display',serif;font-size:26px;line-height:1}
+.hero-cap{position:relative;z-index:1;text-align:center;color:#f3e9dd;margin-top:18px;font-size:14px;letter-spacing:.5px}
+.hero-cap b{color:var(--gold);font-family:'Playfair Display',serif;font-size:17px;display:block}
+
+section{padding:80px 0}
+.shead{margin-bottom:44px}
+
+/* COMBO */
+.combo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:980px;margin:0 auto}
+.combo .top{aspect-ratio:1 !important}
+.combo{position:relative;background:var(--char);color:#f3e9dd;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+.combo:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(43,26,18,.25)}
+.combo .top{position:relative;aspect-ratio:5/4;overflow:hidden}
+.combo .top img{width:100%;height:100%;object-fit:cover}
+.combo .top:after{display:none}
+.combo .pr{position:absolute;bottom:12px;left:16px;z-index:2}
+.combo .pr small{display:block;font-size:11px;color:var(--gold);letter-spacing:1px}
+.combo .pr b{font-family:'Playfair Display',serif;font-size:26px;color:#fff}
+.combo .feat-badge{position:absolute;top:12px;left:12px;z-index:2;background:var(--ember);color:#fff;font-size:11px;font-weight:600;padding:4px 11px;border-radius:20px}
+.combo .body{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+.combo .cname{font-weight:600;font-size:16px;color:#fff;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.combo .cname span{font-size:11px;font-weight:600;color:var(--gold);background:rgba(224,166,106,.12);padding:3px 10px;border-radius:20px;white-space:nowrap}
+.combo h3{font-size:20px;font-weight:700;color:#fff}
+.combo .zh{font-family:'Noto Serif SC',serif;font-size:12px;color:var(--gold);margin-bottom:10px}
+.combo ul{list-style:none;font-size:13px;color:#cbb6a4;flex:1}
+.combo ul li{padding:3px 0 3px 16px;position:relative}
+.combo ul li:before{content:"›";position:absolute;left:0;color:var(--ember);font-weight:700}
+.combo .order{margin:16px 0 0;text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:30px;padding:10px;font-size:14px;font-weight:600;transition:.2s}
+.combo .order:hover{background:var(--ember);border-color:var(--ember)}
+
+/* MENU lookup */
+.menu-wrap{background:#fff}
+.tools{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:24px}
+.search{position:relative;flex:1;min-width:240px;max-width:360px}
+.search input{width:100%;height:46px;border:1.5px solid rgba(43,26,18,.15);border-radius:30px;padding:0 18px 0 44px;font-size:15px;font-family:inherit;background:var(--cream)}
+.search input:focus{outline:none;border-color:var(--ember)}
+.search i{position:absolute;left:16px;top:12px;color:var(--muted);font-style:normal;font-size:18px}
+.view-toggle{display:flex;background:var(--cream2);border-radius:30px;padding:4px}
+.view-toggle button{border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);padding:7px 16px;border-radius:30px;font-family:inherit}
+.view-toggle button.on{background:var(--ink);color:#fff}
+.pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:30px}
+.pill{border:1.5px solid rgba(43,26,18,.14);background:#fff;cursor:pointer;font-size:13.5px;font-weight:500;color:var(--ink);padding:8px 16px;border-radius:30px;font-family:inherit;transition:.2s}
+.pill:hover{border-color:var(--ember);color:var(--ember)}
+.pill.on{background:var(--ember);border-color:var(--ember);color:#fff}
+.grid-view{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.mitem{background:var(--cream);border-radius:18px;overflow:hidden;border:1px solid rgba(43,26,18,.05);transition:.25s}
+.mitem:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(43,26,18,.1)}
+.mitem .ph{aspect-ratio:4/3;overflow:hidden;background:var(--cream2)}
+.mitem .ph img{width:100%;height:100%;object-fit:cover;transition:.3s}
+.mitem:hover .ph img{transform:scale(1.06)}
+.mitem .noimg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:26px;font-style:normal}
+.mitem .b{padding:13px 15px 16px}
+.mitem .sub{font-size:10.5px;font-weight:600;letter-spacing:.5px;color:var(--gold);text-transform:uppercase}
+.mitem h4{font-size:15px;font-weight:600;margin:2px 0 2px}
+.mitem .zh{font-family:'Noto Serif SC',serif;font-size:12px;color:var(--muted)}
+.mitem .price{margin-top:8px;font-weight:700;color:var(--ember);font-size:15px}
+.mitem .price.tbd{color:var(--muted);font-weight:500;font-size:12.5px}
+/* price table */
+.table-view{display:none}
+.cat-table{margin-bottom:30px}
+.cat-table h3{font-size:20px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.cat-table h3 .zh{font-family:'Noto Serif SC',serif;font-size:14px;color:var(--gold);font-weight:600}
+table.price{width:100%;border-collapse:collapse}
+table.price tr{border-bottom:1px solid rgba(43,26,18,.08)}
+table.price td{padding:11px 4px;font-size:15px}
+table.price td.zh{font-family:'Noto Serif SC',serif;color:var(--muted);font-size:13px}
+table.price td.p{text-align:right;font-weight:700;color:var(--ember);white-space:nowrap}
+table.price td.p.tbd{color:var(--muted);font-weight:500;font-size:13px}
+.note{background:var(--cream2);border-radius:14px;padding:14px 18px;font-size:14px;color:var(--deep);margin-bottom:26px;display:flex;gap:10px;align-items:flex-start}
+.note i{font-style:normal;font-size:18px}
+
+/* ABOUT */
+.about{background:linear-gradient(180deg,var(--cream),var(--cream2))}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.about-photo{border-radius:24px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px rgba(43,26,18,.18)}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about p{color:var(--muted);font-size:16px;margin:18px 0}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.feat div{background:#fff;border-radius:14px;padding:16px 18px}
+.feat b{display:block;font-family:'Playfair Display',serif;font-size:24px;color:var(--ember)}
+.feat span{font-size:13px;color:var(--muted)}
+
+/* GALLERY */
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px}
+.gal-grid div{background:var(--cream2);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;border:1.5px dashed rgba(43,26,18,.18);text-align:center;padding:10px}
+.gal-grid div.tall{grid-row:span 2}
+
+/* REVIEWS */
+.rev{background:var(--char);color:#f3e9dd}
+.rev .sec-title{color:#fff}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:42px}
+.rev-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px}
+.rev-card .stars{color:var(--gold);font-size:17px;letter-spacing:2px}
+.rev-card p{margin:14px 0 18px;font-size:15px;color:#e6d6c7}
+.rev-card .who{font-weight:600;font-size:14px}
+.rev-card .who span{display:block;color:#a98e79;font-weight:400;font-size:12px}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px}
+.info-card{background:#fff;border-radius:22px;padding:34px;border:1px solid rgba(43,26,18,.07)}
+.info-row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid rgba(43,26,18,.07)}
+.info-row:last-child{border:none}
+.info-row .ic{width:42px;height:42px;flex:none;border-radius:12px;background:var(--cream2);color:var(--ember);display:flex;align-items:center;justify-content:center;font-size:20px;font-style:normal}
+.info-row b{font-size:15px}.info-row span{font-size:14px;color:var(--muted)}
+.map-card{border-radius:22px;overflow:hidden;min-height:380px;border:1px solid rgba(43,26,18,.07)}
+.map-card iframe{width:100%;height:100%;border:0;min-height:380px}
+
+footer{background:var(--char);color:#cbb6a4;padding:52px 0 28px}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-grid .logo img{height:54px}
+.foot-grid .logo .txt b{color:#fff}.foot-grid .logo .txt span{color:#a98e79}
+.foot-col h4{color:#fff;font-size:14px;margin-bottom:12px;font-family:'Be Vietnam Pro'}
+.foot-col a,.foot-col p{display:block;font-size:14px;margin-bottom:7px;color:#cbb6a4}
+.foot-bot{padding-top:22px;font-size:13px;color:#a98e79;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media(max-width:900px){
+  .menu,.strip{display:none}.burger{display:block}
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{max-width:460px;margin:0 auto}
+  .combo-grid{grid-template-columns:1fr 1fr}
+  .grid-view{grid-template-columns:repeat(3,1fr)}
+  .rev-grid{grid-template-columns:1fr}.gal-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){.combo-grid,.grid-view{grid-template-columns:1fr 1fr}.feat{grid-template-columns:1fr}}
+.qg-toolbar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:9999;background:var(--char);color:#fff;border-radius:40px;padding:9px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 14px 44px rgba(0,0,0,.45);font-size:14px}
+.qg-toolbar b{color:var(--gold);white-space:nowrap}
+.qg-toolbar button{background:var(--ember);color:#fff;border:none;border-radius:30px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.qg-toolbar button:hover{background:var(--deep)}
+.mitem{position:relative}
+.qg-bar{position:absolute;top:6px;right:6px;z-index:5;display:flex;gap:4px}
+.qg-bar button{background:rgba(20,12,8,.78);color:#fff;border:none;border-radius:6px;font-size:11px;padding:3px 8px;cursor:pointer;font-family:inherit}
+.qg-bar button:hover{background:var(--ember)}
+.qg-add{margin-top:16px;background:var(--cream2);border:1.5px dashed var(--ember);color:var(--deep);border-radius:12px;padding:11px 18px;font-weight:600;cursor:pointer;font-family:inherit;grid-column:1/-1}
+.qg-ed:hover{outline:1.5px dashed var(--ember);outline-offset:3px;cursor:text;border-radius:3px}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap nav">
+  <a href="#top" class="logo">
+   <img src="images/logo.png" alt="Quách Gia BBQ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+   <span class="fallback" style="display:none">郭</span>
+   <span class="txt"><b>Quách Gia</b><span data-i18n="brandsub">BBQ · 郭家烧烤火锅</span></span>
+  </a>
+  <nav class="menu">
+   <a href="#combo" data-i18n="n_combo">Combo</a>
+   <a href="#menu" data-i18n="n_menu">Thực đơn</a>
+   <a href="#menu" data-i18n="n_price">Bảng giá</a>
+   <a href="#about" data-i18n="n_about">Giới thiệu</a>
+   <a href="#contact" data-i18n="n_contact">Liên hệ</a>
+  </nav>
+  <div class="hdr-right">
+   <div class="lang">
+    <button data-lang="vi" class="on">VN</button>
+    <button data-lang="zhs">简</button>
+    <button data-lang="zht">繁</button>
+    <button data-lang="en">EN</button>
+   </div>
+   <a href="#contact" class="btn btn-fill" data-i18n="cta_book">Đặt bàn</a>
+   <button class="burger">&#9776;</button>
+  </div>
+ </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+ <div class="wrap hero-grid">
+  <div class="hero-text">
+   <span class="kicker" data-i18n="hero_kick">BBQ · Lẩu nướng · Mì cay</span>
+   <h1 data-i18n="hero_title">Combo lẩu nướng,<br><em>quây quần</em> trọn vị.</h1>
+   <p class="lead" data-i18n="hero_lead">Tinh hoa nướng Hàn – Nhật giữa lòng Uyên Hưng. Combo đầy đặn cho cả nhóm, nguyên liệu tươi mỗi ngày, nước sốt QG độc quyền.</p>
+   <div class="hero-cta">
+    <a href="#combo" class="btn btn-fill" data-i18n="hero_cta1">Xem combo</a>
+    <a href="#menu" class="btn btn-out" data-i18n="hero_cta2">Tra cứu thực đơn</a>
+   </div>
+   <div class="strip">
+    <div><i>&#9733;</i><span data-i18n="s1">Nguyên liệu tươi mỗi ngày</span></div>
+    <div><i>&#9733;</i><span data-i18n="s2">Nước sốt QG độc quyền</span></div>
+    <div><i>&#9733;</i><span data-i18n="s3">Mở cửa 10:00 – 23:00</span></div>
+   </div>
+  </div>
+  <div class="hero-visual">
+   <a href="#combo" class="hero-poster"><img src="images/combo-tiectung.jpg" alt="Combo lẩu nướng Quách Gia"></a>
+   <span class="hero-float">3 combo · chỉ từ 399.000đ</span>
+  </div>
+ </div>
+</section>
+
+<section id="combo">
+ <div class="wrap">
+  <div class="shead center">
+   <span class="kicker" data-i18n="cb_kick">Chủ đạo</span>
+   <h2 class="sec-title mxauto" data-i18n="cb_title">Combo lẩu nướng</h2>
+   <p class="sec-sub center mxauto" data-i18n="cb_sub">Trọn bộ nướng + lẩu, chọn theo số người. Giá đã gồm cả nướng và lẩu.</p>
+  </div>
+  <div class="combo-grid" id="comboGrid"></div>
+ </div>
+</section>
+
+<section id="menu" class="menu-wrap">
+ <div class="wrap">
+  <div class="shead center">
+   <span class="kicker" data-i18n="mn_kick">Thực đơn &amp; Bảng giá</span>
+   <h2 class="sec-title mxauto" data-i18n="mn_title">Tự tra cứu thực đơn</h2>
+   <p class="sec-sub center mxauto" data-i18n="mn_sub">Lọc theo nhóm, tìm món, xem dạng bảng giá.</p>
+  </div>
+  <div class="note"><i>&#9888;</i><span data-i18n="mn_note">Giá tham khảo (VNĐ), có thể thay đổi theo thời điểm. Đặt món: 093 314 7518.</span></div>
+  <div class="tools">
+   <div class="search"><i>&#9906;</i><input type="text" id="searchBox" placeholder="Tìm món..." data-i18n-ph="ph_search"></div>
+   <div class="view-toggle">
+    <button data-view="grid" class="on" data-i18n="v_grid">Hình ảnh</button>
+    <button data-view="table" data-i18n="v_table">Bảng giá</button>
+   </div>
+  </div>
+  <div class="pills" id="pills"></div>
+  <div class="grid-view" id="gridView"></div>
+  <div class="table-view" id="tableView"></div>
+ </div>
+</section>
+
+<section id="about" class="about">
+ <div class="wrap about-grid">
+  <div class="about-photo"><img src="images/bbq-bachi-bo.jpg" alt="Ba chỉ bò Úc sốt QG"></div>
+  <div>
+   <span class="kicker" data-i18n="ab_kick">Câu chuyện</span>
+   <h2 class="sec-title" data-i18n="ab_title">Hương vị Quách Gia</h2>
+   <p data-i18n="ab_p1">Quách Gia mang tinh thần ẩm thực nướng Hàn – Nhật về Uyên Hưng: thịt tươi tuyển chọn mỗi ngày, ướp cùng nước sốt QG độc quyền và nướng ngay tại bàn.</p>
+   <p data-i18n="ab_p2">Không gian ấm cúng cho bữa tiệc gia đình, bạn bè, sinh nhật – nơi mọi người quây quần bên bếp lửa.</p>
+   <div class="feat">
+    <div><b>10:00–23:00</b><span data-i18n="ab_f1">Mở cửa mỗi ngày</span></div>
+    <div><b>Dine-in · Ship</b><span data-i18n="ab_f2">Ăn tại quán & giao tận nơi</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="space">
+ <div class="wrap">
+  <div class="shead center">
+   <span class="kicker" data-i18n="sp_kick">Không gian &amp; Khách hàng</span>
+   <h2 class="sec-title mxauto" data-i18n="sp_title">Khoảnh khắc tại Quách Gia</h2>
+   <p class="sec-sub center mxauto" data-i18n="sp_sub">Ảnh không gian quán &amp; tiệc sinh nhật sẽ được thêm vào đây.</p>
+  </div>
+  <div class="gal-grid">
+   <div class="tall" data-i18n="gph">Ảnh không gian quán</div>
+   <div data-i18n="gph">Ảnh tiệc sinh nhật</div>
+   <div data-i18n="gph">Ảnh khách hàng</div>
+   <div class="tall" data-i18n="gph">Ảnh bàn tiệc</div>
+   <div data-i18n="gph">Ảnh nướng tại bàn</div>
+   <div data-i18n="gph">Ảnh nhóm bạn</div>
+  </div>
+ </div>
+</section>
+
+<section id="reviews" class="rev">
+ <div class="wrap">
+  <div class="shead center">
+   <span class="kicker" data-i18n="rv_kick">Khách nói gì</span>
+   <h2 class="sec-title mxauto" data-i18n="rv_title">Đánh giá khách hàng</h2>
+  </div>
+  <div class="rev-grid" id="revGrid"></div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="wrap">
+  <div class="shead center">
+   <span class="kicker" data-i18n="ct_kick">Ghé Quách Gia</span>
+   <h2 class="sec-title mxauto" data-i18n="ct_title">Liên hệ &amp; Đặt bàn</h2>
+  </div>
+  <div class="contact-grid">
+   <div class="info-card">
+    <div class="info-row"><span class="ic">&#9742;</span><div><b>093 314 7518</b><span data-i18n="ct_phone">Hotline đặt bàn & giao hàng</span></div></div>
+    <div class="info-row"><span class="ic">&#9873;</span><div><b>Uyên Hưng, Tân Uyên</b><span>Tổ 6, Khu phố 1 · Bờ kè Quảng trường</span></div></div>
+    <div class="info-row"><span class="ic">&#9719;</span><div><b>10:00 – 23:00</b><span data-i18n="ct_hours">Mở cửa tất cả các ngày</span></div></div>
+    <div class="info-row"><span class="ic">&#9993;</span><div><b>quachgia.bbq@gmail.com</b><span>Facebook: Quách Gia BBQ&Drink</span></div></div>
+    <a href="https://www.facebook.com/p/Qu%C3%A1ch-Gia-BBQDrink-61574639532959/" target="_blank" class="btn btn-fill" style="margin-top:22px;width:100%;justify-content:center" data-i18n="ct_fb">Nhắn tin đặt bàn</a>
+   </div>
+   <div class="map-card">
+    <iframe loading="lazy" src="https://maps.google.com/maps?q=Qu%C3%A1ch%20Gia%20BBQ%20Uy%C3%AAn%20H%C6%B0ng&z=15&output=embed"></iframe>
+   </div>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <div class="wrap">
+  <div class="foot-grid">
+   <a href="#top" class="logo">
+    <img src="images/logo.png" alt="Quách Gia BBQ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <span class="fallback" style="display:none;width:48px;height:48px;border-radius:50%;background:var(--ember);color:#fff;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:24px">郭</span>
+    <span class="txt"><b>Quách Gia</b><span>BBQ · 郭家烧烤火锅</span></span>
+   </a>
+   <div class="foot-col">
+    <h4 data-i18n="n_menu">Thực đơn</h4>
+    <a href="#combo" data-i18n="n_combo">Combo lẩu nướng</a>
+    <a href="#menu" data-i18n="f_grill">Món nướng</a>
+    <a href="#menu" data-i18n="f_noodle">Mì & lẩu</a>
+   </div>
+   <div class="foot-col">
+    <h4 data-i18n="n_contact">Liên hệ</h4>
+    <p>093 314 7518</p><p>Uyên Hưng, Tân Uyên</p><p>10:00 – 23:00</p>
+   </div>
+  </div>
+  <div class="foot-bot">
+   <span>© 2026 Quách Gia BBQ · 郭家烧烤火锅（渊兴）</span>
+   <span data-i18n="f_made">Đặt bàn: 093 314 7518</span>
+  </div>
+ </div>
+</footer>
+
+<script id="qgdata" type="application/json"></script>
+<script>
+const combos=[
+ {img:'combo-thugian',fb:'bbq-de-suon',price:'399.000đ',badge:'2–3 người',vi:'Combo Thư Giãn',zh:'舒適套餐',items:{vi:['Lẩu: Kim chi / Thái (chọn 1)','Heo tùng bản sốt miso','Dẻ sườn bò','Lưỡi bò','Vây cá hồi sốt miso','+ Panchan: Kimchi · Giá đỗ · Salad'],en:['Hotpot: Kimchi / Thai (pick 1)','Pork jowl, miso','Beef short rib','Beef tongue','Salmon fin, miso','+ Panchan: Kimchi · Sprouts · Salad'],zhs:['火锅：泡菜/泰式（2选1）','松板猪味噌','牛肋','牛舌','味噌鲑鱼鳍','+小菜：泡菜·豆芽·沙拉'],zht:['火鍋：泡菜/泰式（2選1）','松板豬味噌','牛肋','牛舌','味噌鮭魚鰭','+小菜：泡菜·豆芽·沙拉']}},
+ {img:'combo-hanhphuc',fb:'bbq-bachi-bo',price:'449.000đ',badge:'3–4 người',vi:'Combo Hạnh Phúc',zh:'幸福套餐',items:{vi:['Lẩu: Kim chi / Thái (chọn 1)','Ba chỉ bò Úc sốt QG','Thăn phi lê bò','Vú heo nướng chao','Chân gà','Gà cay sốt Hàn','+ Panchan: Kimchi · Giá đỗ · Salad'],en:['Hotpot: Kimchi / Thai (pick 1)','Aussie beef brisket, QG','Beef fillet','Grilled pork, tofu','Chicken feet','Korean spicy chicken','+ Panchan: Kimchi · Sprouts · Salad'],zhs:['火锅：泡菜/泰式（2选1）','QG酱澳洲牛五花','牛菲力','烤猪奶','鸡爪','韩式辣鸡','+小菜：泡菜·豆芽·沙拉'],zht:['火鍋：泡菜/泰式（2選1）','QG醬澳洲牛五花','牛菲力','烤豬奶','雞爪','韓式辣雞','+小菜：泡菜·豆芽·沙拉']}},
+ {img:'combo-tiectung',fb:'hero-hotpot',price:'699.000đ',badge:'6–8 người',vi:'Combo Tiệc Tùng',zh:'派對套餐',items:{vi:['Lẩu: Kim chi / Thái (chọn 1)','Ba chỉ bò Úc sốt QG','Thăn phi lê bò phô mai','Vú heo nướng chao','Heo tùng bản','Lưỡi bò','Mực ống nướng Thái','Gà cay sốt Hàn','Cơm chiên 4 người','+ Panchan: Kimchi · Giá đỗ · Salad'],en:['Hotpot: Kimchi / Thai (pick 1)','Aussie beef brisket, QG','Beef fillet w/ cheese','Grilled pork, tofu','Pork jowl, miso','Beef tongue','Thai grilled squid','Korean spicy chicken','Fried rice (4 pax)','+ Panchan: Kimchi · Sprouts · Salad'],zhs:['火锅：泡菜/泰式（2选1）','QG酱澳洲牛五花','起司牛菲力','烤猪奶','松板猪','牛舌','泰式烤鱿鱼','韩式辣鸡','炒饭4人份','+小菜：泡菜·豆芽·沙拉'],zht:['火鍋：泡菜/泰式（2選1）','QG醬澳洲牛五花','起司牛菲力','烤豬奶','松板豬','牛舌','泰式烤魷魚','韓式辣雞','炒飯4人份','+小菜：泡菜·豆芽·沙拉']}}
+];
+const cats=[
+ {key:'combo',vi:'Combo lẩu nướng',en:'Grill+Hotpot combo',zhs:'烧烤火锅套餐',zht:'燒烤火鍋套餐'},
+ {key:'combo-nuong',vi:'Combo nướng',en:'Grill combo',zhs:'烧烤套餐',zht:'燒烤套餐'},
+ {key:'lau',vi:'Lẩu',en:'Hotpot',zhs:'火锅',zht:'火鍋'},
+ {key:'nuong',vi:'Món nướng',en:'Grill',zhs:'烧烤',zht:'燒烤'},
+ {key:'mi',vi:'Mì',en:'Noodle',zhs:'面',zht:'麵'},
+ {key:'com',vi:'Cơm',en:'Rice',zhs:'饭',zht:'飯'},
+ {key:'sushi',vi:'Sushi',en:'Sushi',zhs:'寿司',zht:'壽司'},
+ {key:'anvat',vi:'Đồ ăn vặt',en:'Snacks',zhs:'小吃',zht:'小吃'},
+ {key:'nuocngot',vi:'Nước ngọt, bia',en:'Soft drink, beer',zhs:'饮料·啤酒',zht:'飲料·啤酒'},
+ {key:'phache',vi:'Nước pha chế',en:'Signature drinks',zhs:'特调饮品',zht:'特調飲品'}
+];
+const items=[
+ {cat:'combo',img:'combo-thugian',vi:'Combo Thư Giãn',en:'Relax combo',zhs:'舒适套餐',zht:'舒適套餐',price:'399.000đ'},
+ {cat:'combo',img:'combo-hanhphuc',vi:'Combo Hạnh Phúc',en:'Happy combo',zhs:'幸福套餐',zht:'幸福套餐',price:'449.000đ'},
+ {cat:'combo',img:'combo-tiectung',vi:'Combo Tiệc Tùng',en:'Party combo',zhs:'派对套餐',zht:'派對套餐',price:'699.000đ'},
+ {cat:'combo-nuong',img:'combo-nuong-tietkiem',vi:'Combo Tiết Kiệm',en:'Saver grill combo',zhs:'实惠烧烤套餐',zht:'實惠燒烤套餐',price:'199.000đ'},
+ {cat:'combo-nuong',img:'combo-nuong-cucchat',vi:'Combo Cực Chất',en:'Value grill combo',zhs:'超值烧烤套餐',zht:'超值燒烤套餐',price:'299.000đ'},
+ {cat:'combo-nuong',img:'combo-nuong-anlaghien',vi:'Combo Ăn Là Ghiền',en:'Crave grill combo',zhs:'爱上烧烤套餐',zht:'愛上燒烤套餐',price:'429.000đ'},
+ {cat:'lau',img:'hero-hotpot',vi:'Lẩu kim chi Hàn Quốc',en:'Korean kimchi hotpot',zhs:'泡菜火锅',zht:'泡菜火鍋',price:'229.000đ'},
+ {cat:'lau',img:'hero-hotpot',vi:'Lẩu Thái hải sản',en:'Thai seafood hotpot',zhs:'泰式火锅',zht:'泰式火鍋',price:'229.000đ'},
+ {cat:'nuong',sub:'Bò',img:'bbq-bachi-bo',vi:'Ba chỉ bò Úc sốt QG',en:'Aussie beef brisket',zhs:'QG酱牛五花',zht:'QG醬牛五花',price:'79.000đ'},
+ {cat:'nuong',sub:'Bò',img:'bbq-de-suon',vi:'Dẻ sườn bò',en:'Beef short rib',zhs:'牛肋',zht:'牛肋',price:'55.000đ'},
+ {cat:'nuong',sub:'Bò',img:'bbq-luoi-bo',vi:'Lưỡi bò nướng',en:'Grilled beef tongue',zhs:'牛舌',zht:'牛舌',price:'69.000đ'},
+ {cat:'nuong',sub:'Bò',img:'bbq-phile-bo',vi:'Thăn phi lê bò',en:'Beef fillet',zhs:'牛菲力',zht:'牛菲力',price:'59.000đ'},
+ {cat:'nuong',sub:'Heo',img:'bbq-bachi-heo',vi:'Ba chỉ heo miso Hàn',en:'Pork belly, K.miso',zhs:'猪五花',zht:'豬五花',price:'65.000đ'},
+ {cat:'nuong',sub:'Heo',img:'bbq-heo-tungban',vi:'Heo tùng bản miso',en:'Pork jowl, miso',zhs:'松板猪',zht:'松板豬',price:'55.000đ'},
+ {cat:'nuong',sub:'Heo',img:'bbq-vu-heo',vi:'Vú heo nướng chao',en:'Grilled pork, tofu',zhs:'猪奶',zht:'豬奶',price:'60.000đ'},
+ {cat:'nuong',sub:'Gà',img:'bbq-chan-ga',vi:'Chân gà nướng',en:'Grilled chicken feet',zhs:'鸡爪',zht:'雞爪',price:'39.000đ'},
+ {cat:'nuong',sub:'Gà',img:null,vi:'Gà cay sốt Hàn',en:'Korean spicy chicken',zhs:'韩式辣鸡',zht:'韓式辣雞',price:'59.000đ'},
+ {cat:'nuong',sub:'Hải sản',img:'bbq-muc',vi:'Mực ống nướng Thái',en:'Thai grilled squid',zhs:'泰式鱿鱼',zht:'泰式魷魚',price:'89.000đ'},
+ {cat:'nuong',sub:'Hải sản',img:'bbq-ca-hoi',vi:'Vây cá hồi sốt QG',en:'Salmon fin, QG',zhs:'QG酱鲑鱼鳍',zht:'QG醬鮭魚鰭',price:'39.000đ'},
+ {cat:'mi',img:'noodle-hotdog',vi:'Mì cay xúc xích',en:'Hotdog ramen',zhs:'热狗拉面',zht:'熱狗拉麵',price:'39.000đ'},
+ {cat:'mi',img:'noodle-bo-nguhoa',vi:'Mì cay bò ngũ hoa',en:'Beef brisket ramen',zhs:'拉面牛五花',zht:'拉麵牛五花',price:'55.000đ'},
+ {cat:'mi',img:'hero-hotpot',vi:'Mì cay hải sản',en:'Spicy seafood ramen',zhs:'海鲜拉面',zht:'海鮮拉麵',price:'59.000đ'},
+ {cat:'mi',img:'noodle-tonghop',vi:'Mì cay tổng hợp',en:'Mixed ramen',zhs:'拉面综合',zht:'拉麵綜合',price:'79.000đ'},
+ {cat:'mi',img:'noodle-kem',vi:'Mì udon sốt kem',en:'Creamy udon',zhs:'奶油乌龙面',zht:'奶油烏龍麵',price:'55.000đ'},
+ {cat:'mi',img:'noodle-udon-bo',vi:'Udon bò',en:'Beef udon',zhs:'牛肉乌龙面',zht:'牛肉烏龍麵',price:'65.000đ'},
+ {cat:'com',img:'rice-comchien',vi:'Cơm chiên thịt heo (2 người)',en:'Pork fried rice (2 pax)',zhs:'猪肉炒饭(2人)',zht:'豬肉炒飯(2人)',price:'45.000đ'},
+ {cat:'com',img:'rice-comchien',vi:'Cơm chiên thịt heo (4 người)',en:'Pork fried rice (4 pax)',zhs:'猪肉炒饭(4人)',zht:'豬肉炒飯(4人)',price:'75.000đ'},
+ {cat:'com',img:'rice-comchien',vi:'Cơm chiên thịt bò (2 người)',en:'Beef fried rice (2 pax)',zhs:'牛肉炒饭(2人)',zht:'牛肉炒飯(2人)',price:'49.000đ'},
+ {cat:'com',img:'rice-comchien',vi:'Cơm chiên thịt bò (4 người)',en:'Beef fried rice (4 pax)',zhs:'牛肉炒饭(4人)',zht:'牛肉炒飯(4人)',price:'79.000đ'},
+ {cat:'com',img:'rice-comchien',vi:'Cơm trộn bò Quách Gia',en:'QG beef bibimbap',zhs:'郭家拌饭(牛肉)',zht:'郭家拌飯(牛肉)',price:'55.000đ'},
+ {cat:'sushi',img:'rice-sushi',vi:'Sushi cá hồi (8 miếng)',en:'Salmon sashimi (8 pcs)',zhs:'鲑鱼生鱼片(8片)',zht:'鮭魚生魚片(8片)',price:'150.000đ'},
+ {cat:'sushi',img:'rice-sushi',vi:'Sushi thịt bò',en:'Beef sushi',zhs:'牛肉寿司',zht:'牛肉壽司',price:'45.000đ'},
+ {cat:'sushi',img:'rice-comcuon-cangu',vi:'Cơm cuộn cá ngừ',en:'Tuna rice roll',zhs:'鲔鱼饭卷',zht:'鮪魚飯卷',price:'45.000đ'},
+ {cat:'sushi',img:'rice-comcuon',vi:'Cơm cuộn thanh cua',en:'Crab stick rice roll',zhs:'蟹肉棒饭卷',zht:'蟹肉棒飯卷',price:'39–45.000đ'},
+ {cat:'sushi',img:'rice-comcuon',vi:'Cơm cuộn xúc xích',en:'Hotdog rice roll',zhs:'热狗饭卷',zht:'熱狗飯卷',price:'35–40.000đ'},
+ {cat:'anvat',img:'fried-dochien',vi:'Combo đồ chiên',en:'Fried combo platter',zhs:'炸物拼盘',zht:'炸物拼盤',price:'89.000đ'},
+ {cat:'anvat',img:'fried-tom',vi:'Tôm chiên tempura Nhật (5 con)',en:'Tempura prawns (5 pcs)',zhs:'天妇罗炸虾(5只)',zht:'天婦羅炸蝦(5隻)',price:'39.000đ'},
+ {cat:'anvat',img:null,vi:'Gà cay sốt Hàn Quốc',en:'Korean spicy chicken',zhs:'韩式炸鸡',zht:'韓式炸雞',price:'59.000đ'},
+ {cat:'anvat',img:null,vi:'Mandu chiên (há cảo Hàn)',en:'Fried mandu',zhs:'炸韩国饺子',zht:'炸韓國餃子',price:'40.000đ'},
+ {cat:'anvat',img:null,vi:'Khoai tây lắc phô mai',en:'Cheese fries',zhs:'起司薯条',zht:'起司薯條',price:'18.000đ'},
+ {cat:'anvat',img:null,vi:'Khoai tây chiên',en:'French fries',zhs:'薯条',zht:'薯條',price:'15.000đ'},
+ {cat:'anvat',img:null,vi:'Phô mai que',en:'Cheese sticks',zhs:'起司条',zht:'起司條',price:'20.000đ'},
+ {cat:'anvat',img:null,vi:'Phô mai viên',en:'Cheese balls',zhs:'起司球',zht:'起司球',price:'18.000đ'},
+ {cat:'anvat',img:null,vi:'Cá viên',en:'Fish balls',zhs:'鱼丸',zht:'魚丸',price:'12.000đ'},
+ {cat:'anvat',img:null,vi:'Viên trứng cá chiên',en:'Fried roe balls',zhs:'炸鱼卵丸',zht:'炸魚卵丸',price:'20.000đ'},
+ {cat:'anvat',img:null,vi:'Viên hải sản sốt mayonnaise',en:'Seafood balls, mayo',zhs:'美乃滋海鲜丸',zht:'美乃滋海鮮丸',price:'18.000đ'},
+ {cat:'anvat',img:null,vi:'Xúc xích (1 cây)',en:'Sausage (1 pc)',zhs:'热狗(1条)',zht:'熱狗(1條)',price:'15.000đ'},
+ {cat:'anvat',img:null,vi:'Phô mai Miso 25g',en:'Miso cheese 25g',zhs:'味噌起司',zht:'味噌起司',price:'30.000đ'},
+ {cat:'nuocngot',img:null,vi:'Coca / Pepsi / 7Up',en:'Coca / Pepsi / 7Up',zhs:'可乐/百事/七喜',zht:'可樂/百事/七喜',price:'15.000đ'},
+ {cat:'nuocngot',img:null,vi:'Bia Tiger / Saigon',en:'Tiger / Saigon beer',zhs:'虎牌/西贡啤酒',zht:'虎牌/西貢啤酒',price:'từ 20.000đ'},
+ {cat:'phache',img:null,vi:'Trà đào / Trà tắc',en:'Peach / kumquat tea',zhs:'桃子茶/金桔茶',zht:'桃子茶/金桔茶',price:'từ 25.000đ'},
+ {cat:'phache',img:null,vi:'Soda / Nước ép',en:'Soda / juice',zhs:'苏打/果汁',zht:'蘇打/果汁',price:'từ 25.000đ'}
+];
+const reviews=[
+ {vi:'Đồ nướng tươi, nước sốt QG ăn cuốn lắm. Combo đầy đặn, hợp tụ tập bạn bè.',en:'Fresh grill, addictive QG sauce. Generous combo, great for friends.',zhs:'烧烤新鲜，QG酱好吃。套餐丰盛，适合聚会。',zht:'燒烤新鮮，QG醬好吃。套餐豐盛，適合聚會。',who:'Minh Anh'},
+ {vi:'Combo 449k ăn no 4 người, có cả lẩu lẫn nướng. Giá quá hợp lý.',en:'449k combo feeds 4, both hotpot & grill. Great value.',zhs:'449k套餐4人吃饱，有火锅有烧烤，超值。',zht:'449k套餐4人吃飽，有火鍋有燒烤，超值。',who:'Tuấn Kiệt'},
+ {vi:'Đặt tiệc sinh nhật ở đây quá ổn, món ra nhanh, nướng tại bàn vui.',en:'Booked a birthday here, fast service, fun table-side grill.',zhs:'在这办生日很棒，上菜快，桌边烧烤有趣。',zht:'在這辦生日很棒，上菜快，桌邊燒烤有趣。',who:'Hồng Nhung'}
+];
+const I18N={};
+I18N.vi={brandsub:'BBQ · 郭家烧烤火锅',n_combo:'Combo',n_menu:'Thực đơn',n_price:'Bảng giá',n_about:'Giới thiệu',n_contact:'Liên hệ',cta_book:'Đặt bàn',hero_kick:'BBQ · Lẩu nướng · Mì cay',hero_title:'Combo lẩu nướng,<br><em>quây quần</em> trọn vị.',hero_lead:'Tinh hoa nướng Hàn – Nhật giữa lòng Uyên Hưng. Combo đầy đặn cho cả nhóm, nguyên liệu tươi mỗi ngày, nước sốt QG độc quyền.',hero_cta1:'Xem combo',hero_cta2:'Tra cứu thực đơn',hero_from:'CHỈ TỪ',hero_cap:'Nướng + Lẩu · đủ vị cho cả nhóm',s1:'Nguyên liệu tươi mỗi ngày',s2:'Nước sốt QG độc quyền',s3:'Mở cửa 10:00 – 23:00',cb_kick:'Chủ đạo',cb_title:'Combo lẩu nướng',cb_sub:'Trọn bộ nướng + lẩu, chọn theo số người. Giá đã gồm cả nướng và lẩu.',order:'Đặt combo này',mn_kick:'Thực đơn & Bảng giá',mn_title:'Tự tra cứu thực đơn',mn_sub:'Lọc theo nhóm, tìm món, xem dạng bảng giá.',mn_note:'Giá tham khảo (VNĐ), có thể thay đổi theo thời điểm. Đặt món: 093 314 7518.',ph_search:'Tìm món...',v_grid:'Hình ảnh',v_table:'Bảng giá',all:'Tất cả',tbd:'Đang cập nhật',ab_kick:'Câu chuyện',ab_title:'Hương vị Quách Gia',ab_p1:'Quách Gia mang tinh thần ẩm thực nướng Hàn – Nhật về Uyên Hưng: thịt tươi tuyển chọn mỗi ngày, ướp cùng nước sốt QG độc quyền và nướng ngay tại bàn.',ab_p2:'Không gian ấm cúng cho bữa tiệc gia đình, bạn bè, sinh nhật – nơi mọi người quây quần bên bếp lửa.',ab_f1:'Mở cửa mỗi ngày',ab_f2:'Ăn tại quán & giao tận nơi',sp_kick:'Không gian & Khách hàng',sp_title:'Khoảnh khắc tại Quách Gia',sp_sub:'Ảnh không gian quán & tiệc sinh nhật sẽ được thêm vào đây.',gph:'Ảnh sẽ cập nhật',rv_kick:'Khách nói gì',rv_title:'Đánh giá khách hàng',ct_kick:'Ghé Quách Gia',ct_title:'Liên hệ & Đặt bàn',ct_phone:'Hotline đặt bàn & giao hàng',ct_hours:'Mở cửa tất cả các ngày',ct_fb:'Nhắn tin đặt bàn',f_grill:'Món nướng',f_noodle:'Mì & lẩu',f_made:'Đặt bàn: 093 314 7518'};
+I18N.en={brandsub:'BBQ · Korean–Japanese grill',n_combo:'Combo',n_menu:'Menu',n_price:'Price list',n_about:'About',n_contact:'Contact',cta_book:'Book',hero_kick:'BBQ · Grill · Spicy noodle',hero_title:'Grill + hotpot combo,<br><em>better together.</em>',hero_lead:'Korean–Japanese grilling in the heart of Uyên Hưng. Generous combos for the whole group, fresh daily, exclusive QG sauce.',hero_cta1:'View combos',hero_cta2:'Browse menu',hero_from:'FROM',hero_cap:'Grill + hotpot · for the whole group',s1:'Fresh ingredients daily',s2:'Exclusive QG sauce',s3:'Open 10:00 – 23:00',cb_kick:'Signature',cb_title:'Grill + hotpot combos',cb_sub:'A full grill + hotpot set, pick by group size. Price includes both.',order:'Order this combo',mn_kick:'Menu & Price list',mn_title:'Browse the menu',mn_sub:'Filter by category, search, switch to price view.',mn_note:'Reference prices (VND), subject to change. Order: 093 314 7518.',ph_search:'Search dish...',v_grid:'Gallery',v_table:'Price list',all:'All',tbd:'Updating',ab_kick:'Our story',ab_title:'The taste of Quách Gia',ab_p1:'Quách Gia brings Korean–Japanese grilling to Uyên Hưng: hand-picked fresh meat daily, marinated in our exclusive QG sauce and grilled right at your table.',ab_p2:'A warm space for family, friends and birthday parties – where everyone gathers around the fire.',ab_f1:'Open every day',ab_f2:'Dine-in & delivery',sp_kick:'Space & Guests',sp_title:'Moments at Quách Gia',sp_sub:'Photos of our space & birthday parties will be added here.',gph:'Photo coming soon',rv_kick:'What guests say',rv_title:'Customer reviews',ct_kick:'Visit us',ct_title:'Contact & Booking',ct_phone:'Booking & delivery hotline',ct_hours:'Open every day',ct_fb:'Message to book',f_grill:'Grill',f_noodle:'Noodle & hotpot',f_made:'Booking: 093 314 7518'};
+I18N.zhs={brandsub:'烧烤 · 郭家烧烤火锅',n_combo:'套餐',n_menu:'菜单',n_price:'价目表',n_about:'关于',n_contact:'联系',cta_book:'订位',hero_kick:'烧烤 · 火锅 · 麻辣面',hero_title:'烧烤火锅套餐，<br><em>一起</em>吃才香。',hero_lead:'渊兴韩日烧烤精华。丰盛套餐适合全家，每日新鲜食材，独家QG酱。',hero_cta1:'查看套餐',hero_cta2:'浏览菜单',hero_from:'仅需',hero_cap:'烧烤+火锅 · 全家共享',s1:'每日新鲜食材',s2:'独家QG酱',s3:'营业 10:00 – 23:00',cb_kick:'招牌',cb_title:'烧烤火锅套餐',cb_sub:'烧烤加火锅整套，按人数选择。价格已含烧烤和火锅。',order:'订这个套餐',mn_kick:'菜单与价目表',mn_title:'自助浏览菜单',mn_sub:'按分类筛选、搜索、切换价目表。',mn_note:'参考价格（越南盾），可能调整。订餐：093 314 7518。',ph_search:'搜索菜品...',v_grid:'图片',v_table:'价目表',all:'全部',tbd:'更新中',ab_kick:'品牌故事',ab_title:'郭家的味道',ab_p1:'郭家将韩日烧烤带到渊兴：每日精选新鲜肉品，以独家QG酱腌制，桌边现烤。',ab_p2:'温馨空间，适合家庭、朋友与生日聚会——围着炉火欢聚。',ab_f1:'每日营业',ab_f2:'堂食与外送',sp_kick:'环境与顾客',sp_title:'郭家的精彩瞬间',sp_sub:'店内环境与生日派对照片将陆续添加。',gph:'照片即将更新',rv_kick:'顾客评价',rv_title:'顾客评价',ct_kick:'欢迎光临',ct_title:'联系与订位',ct_phone:'订位与外送热线',ct_hours:'每日营业',ct_fb:'发消息订位',f_grill:'烧烤',f_noodle:'面与火锅',f_made:'订位：093 314 7518'};
+I18N.zht={brandsub:'燒烤 · 郭家燒烤火鍋',n_combo:'套餐',n_menu:'菜單',n_price:'價目表',n_about:'關於',n_contact:'聯絡',cta_book:'訂位',hero_kick:'燒烤 · 火鍋 · 麻辣麵',hero_title:'燒烤火鍋套餐，<br><em>一起</em>吃才香。',hero_lead:'淵興韓日燒烤精華。豐盛套餐適合全家，每日新鮮食材，獨家QG醬。',hero_cta1:'查看套餐',hero_cta2:'瀏覽菜單',hero_from:'僅需',hero_cap:'燒烤+火鍋 · 全家共享',s1:'每日新鮮食材',s2:'獨家QG醬',s3:'營業 10:00 – 23:00',cb_kick:'招牌',cb_title:'燒烤火鍋套餐',cb_sub:'燒烤加火鍋整套，按人數選擇。價格已含燒烤和火鍋。',order:'訂這個套餐',mn_kick:'菜單與價目表',mn_title:'自助瀏覽菜單',mn_sub:'按分類篩選、搜尋、切換價目表。',mn_note:'參考價格（越南盾），可能調整。訂餐：093 314 7518。',ph_search:'搜尋菜品...',v_grid:'圖片',v_table:'價目表',all:'全部',tbd:'更新中',ab_kick:'品牌故事',ab_title:'郭家的味道',ab_p1:'郭家將韓日燒烤帶到淵興：每日精選新鮮肉品，以獨家QG醬醃製，桌邊現烤。',ab_p2:'溫馨空間，適合家庭、朋友與生日聚會——圍著爐火歡聚。',ab_f1:'每日營業',ab_f2:'堂食與外送',sp_kick:'環境與顧客',sp_title:'郭家的精彩瞬間',sp_sub:'店內環境與生日派對照片將陸續添加。',gph:'照片即將更新',rv_kick:'顧客評價',rv_title:'顧客評價',ct_kick:'歡迎光臨',ct_title:'聯絡與訂位',ct_phone:'訂位與外送熱線',ct_hours:'每日營業',ct_fb:'發訊息訂位',f_grill:'燒烤',f_noodle:'麵與火鍋',f_made:'訂位：093 314 7518'};
+let lang='vi',activeCat='all',view='grid';
+const T=k=>I18N[lang][k];
+const nm=o=>o[lang]||o.vi;
+function imgTag(it){const s=it.img?(String(it.img).startsWith('data:')?it.img:`images/${it.img}.jpg`):'';return s?`<img src="${s}" alt="${it.vi}">`:`<div class="noimg">&#127860;</div>`}
+const EDIT=new URLSearchParams(location.search).has('edit');
+function applyData(j){if(!j)return;if(j.combos){combos.length=0;combos.push(...j.combos)}if(j.items){items.length=0;items.push(...j.items)}if(j.reviews){reviews.length=0;reviews.push(...j.reviews)}if(j.I18N){['vi','en','zhs','zht'].forEach(l=>{if(j.I18N[l])Object.assign(I18N[l],j.I18N[l])})}}
+try{applyData(JSON.parse(document.getElementById('qgdata').textContent||'{}'))}catch(e){}
+if(EDIT){try{applyData(JSON.parse(localStorage.qg_draft||'{}'))}catch(e){}}
+items.forEach((it,i)=>{if(it._id==null)it._id=i});combos.forEach((c,i)=>{if(c._id==null)c._id=i});
+function saveDraft(){try{localStorage.qg_draft=JSON.stringify({combos:combos,items:items,reviews:reviews,I18N:I18N})}catch(e){}}
+function renderCombos(){
+ document.getElementById('comboGrid').innerHTML=combos.map(c=>`
+  <div class="combo" data-id="${c._id}">${EDIT?comboBar(c._id):''}<div class="top"><img src="${c.img&&String(c.img).startsWith('data:')?c.img:`images/${c.img}.jpg`}" alt="${c.vi}" onerror="this.onerror=null;this.src='images/${c.fb}.jpg'"></div>
+   <div class="body"><div class="cname">${nm(c)} <span>${c.badge}</span></div>
+   <ul>${(c.items[lang]||c.items.vi).map(i=>`<li>${i}</li>`).join('')}</ul>
+   <a href="#contact" class="order">${T('order')} · ${c.price}</a></div></div>`).join('');
+}
+function renderPills(){
+ const list=[{key:'all',label:T('all')},...cats.map(c=>({key:c.key,label:nm(c)}))];
+ document.getElementById('pills').innerHTML=list.map(c=>`<button class="pill${c.key===activeCat?' on':''}" data-cat="${c.key}">${c.label}</button>`).join('');
+ document.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{activeCat=b.dataset.cat;renderPills();renderItems();});
+}
+function filtered(){
+ const q=(document.getElementById('searchBox').value||'').toLowerCase();
+ return items.filter(it=>(activeCat==='all'||it.cat===activeCat) &&
+  (!q||['vi','en','zhs','zht'].some(l=>(it[l]||'').toLowerCase().includes(q))));
+}
+function renderItems(){
+ const data=filtered();
+ document.getElementById('gridView').innerHTML=data.map(it=>`
+  <div class="mitem" data-id="${it._id}">${EDIT?editBar(it._id):''}<div class="ph">${imgTag(it)}</div>
+   <div class="b">${it.sub?`<div class="sub">${it.sub}</div>`:''}<h4>${nm(it)}</h4>
+   <div class="zh">${it.zht}</div>
+   <div class="price${it.price?'':' tbd'}">${it.price||T('tbd')}</div></div></div>`).join('')+(EDIT?`<button class="qg-add qg-edit-ui" onclick="addItem()">+ Thêm món vào nhóm này</button>`:'');
+ const shown=cats.filter(c=>activeCat==='all'||c.key===activeCat);
+ document.getElementById('tableView').innerHTML=shown.map(c=>{
+  const rows=data.filter(it=>it.cat===c.key);
+  if(!rows.length)return'';
+  return`<div class="cat-table"><h3>${nm(c)} <span class="zh">${c.zht}</span></h3>
+   <table class="price">${rows.map(it=>`<tr><td>${nm(it)}</td><td class="zh">${it.zht}</td>
+    <td class="p${it.price?'':' tbd'}">${it.price||T('tbd')}</td></tr>`).join('')}</table></div>`;
+ }).join('');
+}
+function renderReviews(){
+ document.getElementById('revGrid').innerHTML=reviews.map(r=>`
+  <div class="rev-card"><div class="stars">★★★★★</div><p>"${r[lang]||r.vi}"</p>
+   <div class="who">${r.who}<span>Google review</span></div></div>`).join('');
+}
+function applyLang(){
+ document.querySelectorAll('[data-i18n]').forEach(el=>{const t=T(el.getAttribute('data-i18n'));if(t!=null)el.innerHTML=t;});
+ document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const t=T(el.getAttribute('data-i18n-ph'));if(t!=null)el.placeholder=t;});
+ document.documentElement.lang=lang==='vi'?'vi':(lang==='en'?'en':'zh');
+ renderCombos();renderPills();renderItems();renderReviews();
+ if(EDIT)document.querySelectorAll('[data-i18n]').forEach(el=>{el.setAttribute('contenteditable','true');el.classList.add('qg-ed')});
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{
+ lang=b.dataset.lang;document.querySelectorAll('.lang button').forEach(x=>x.classList.remove('on'));b.classList.add('on');applyLang();
+});
+document.querySelectorAll('.view-toggle button').forEach(b=>b.onclick=()=>{
+ view=b.dataset.view;document.querySelectorAll('.view-toggle button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+ document.getElementById('gridView').style.display=view==='grid'?'grid':'none';
+ document.getElementById('tableView').style.display=view==='table'?'block':'none';
+});
+document.getElementById('searchBox').addEventListener('input',renderItems);
+function byId(id){return items.find(x=>x._id==id)}
+function refresh(){saveDraft();applyLang();}
+function editBar(id){return '<div class="qg-bar qg-edit-ui"><button onclick="editItem('+id+')">Sửa</button><button onclick="photoItem('+id+')">Ảnh</button><button onclick="delItem('+id+')">Xoá</button></div>'}
+function comboBar(id){return '<div class="qg-bar qg-edit-ui"><button onclick="editCombo('+id+')">Sửa</button><button onclick="photoCombo('+id+')">Ảnh</button></div>'}
+function pickImg(cb){const inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=()=>{const fl=inp.files[0];if(!fl)return;const r=new FileReader();r.onload=()=>cb(r.result);r.readAsDataURL(fl)};inp.click();}
+function editItem(id){const it=byId(id);if(!it)return;const name=prompt('Tên món:',it[lang]||it.vi);if(name===null)return;const price=prompt('Giá (vd 59.000đ), để trống nếu chưa có:',it.price||'');it[lang]=name;if(!it.vi)it.vi=name;it.price=price?price:null;refresh();}
+function photoItem(id){const it=byId(id);if(!it)return;pickImg(d=>{it.img=d;refresh();});}
+function delItem(id){if(!confirm('Xoá món này?'))return;const i=items.findIndex(x=>x._id==id);if(i>=0)items.splice(i,1);refresh();}
+function addItem(){let cat=activeCat;if(cat==='all'){cat=prompt('Nhập nhóm: combo, combo-nuong, lau, nuong, mi, com, sushi, anvat, nuocngot, phache','nuong');if(!cat)return;}const name=prompt('Tên món mới:');if(!name)return;const price=prompt('Giá:','');const id=items.reduce((m,x)=>Math.max(m,x._id||0),0)+1;items.push({cat:cat,img:null,vi:name,en:name,zhs:name,zht:name,price:price?price:null,_id:id});refresh();}
+function editCombo(id){const c=combos.find(x=>x._id==id);if(!c)return;const name=prompt('Tên combo:',c[lang]||c.vi);if(name===null)return;const price=prompt('Giá:',c.price||'');c[lang]=name;if(!c.vi)c.vi=name;if(price!==null)c.price=price;refresh();}
+function photoCombo(id){const c=combos.find(x=>x._id==id);if(!c)return;pickImg(d=>{c.img=d;refresh();});}
+function clearDraft(){if(confirm('Xoá tất cả chỉnh sửa nháp, quay về bản gốc?')){localStorage.removeItem('qg_draft');location.reload();}}
+function clean(a){return a.map(o=>{const c=Object.assign({},o);delete c._id;return c;})}
+function exportSite(){document.getElementById('qgdata').textContent=JSON.stringify({combos:clean(combos),items:clean(items),reviews:reviews,I18N:I18N});const root=document.documentElement.cloneNode(true);root.querySelectorAll('.qg-edit-ui').forEach(e=>e.remove());root.querySelectorAll('[contenteditable]').forEach(e=>{e.removeAttribute('contenteditable');e.classList.remove('qg-ed')});const html='<!DOCTYPE html>\n'+root.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';document.body.appendChild(a);a.click();a.remove();alert('Đã tải file index.html mới. Hãy up file này lên hosting để cập nhật website.');}
+if(EDIT){const tb=document.createElement('div');tb.className='qg-toolbar qg-edit-ui';tb.innerHTML='<b>● Đang chỉnh sửa</b> <button onclick="exportSite()">💾 Tải file mới</button> <button onclick="clearDraft()">↺ Xoá nháp</button>';document.body.appendChild(tb);document.addEventListener('blur',function(e){const el=e.target;if(el&&el.getAttribute&&el.getAttribute('data-i18n')&&el.isContentEditable){I18N[lang][el.getAttribute('data-i18n')]=el.innerHTML;saveDraft();}},true);}
+applyLang();
+</script>
+</body>
+</html>
